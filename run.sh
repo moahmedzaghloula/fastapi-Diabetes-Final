@@ -1,0 +1,1 @@
+uvicorn fast_api:app --reload  --port 8013
