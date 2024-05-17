@@ -1,9 +1,17 @@
 from fastapi import FastAPI, Form
 import joblib
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
 model = joblib.load('diabetes.pkl')
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_origins=['*']
+)
 
 
 @app.get("/")  
